@@ -22,4 +22,8 @@ public class Vehicle {
         this.odometer = odometer;
         this.price = price;
     }
+
+    public void display () {
+        System.out.printf("Vin: %d Year:%d Make: %s Model: %s Type: %s Color %s Mileage: %d Price: %s\n", this.vin, this.year, this.make, this.model, this.vehicleType, this.color, this.odometer, this.price);
+    }
 }
