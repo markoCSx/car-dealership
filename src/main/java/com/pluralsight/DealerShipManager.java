@@ -20,15 +20,14 @@ public class DealerShipManager {
             String phoneNumber = dealerShipSplit[2];
             Dealership dealership = new Dealership(name, address, phoneNumber);
 
-            while (line != null) {
-                line = bufferedReader.readLine();
+            while ((line = bufferedReader.readLine()) != null) {
                 String[] vehicleSplit = line.split(Pattern.quote("|"));
                 int vin = Integer.parseInt(vehicleSplit[0]);
                 int year = Integer.parseInt(vehicleSplit[1]);
-                String make = dealerShipSplit[2];
-                String model = dealerShipSplit[3];
-                String vehicleType = dealerShipSplit[4];
-                String color = dealerShipSplit[5];
+                String make = vehicleSplit[2];
+                String model = vehicleSplit[3];
+                String vehicleType = vehicleSplit[4];
+                String color = vehicleSplit[5];
                 int odometer = Integer.parseInt(vehicleSplit[6]);
                 BigDecimal price = new BigDecimal(vehicleSplit[7]);
                 Vehicle newVehicle = new Vehicle(vin, year, make, model, vehicleType, color, odometer, price);
