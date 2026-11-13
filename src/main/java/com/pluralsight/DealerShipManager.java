@@ -7,6 +7,10 @@ import java.util.regex.Pattern;
 
 public class DealerShipManager {
 
+    private DealerShipManager () {
+
+    }
+
     public static Dealership getDealerShip() {
         try {
             FileReader fileReader = new FileReader("src/main/resources/inventorybackup.csv");

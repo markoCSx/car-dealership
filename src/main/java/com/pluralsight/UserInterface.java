@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class UserInterface {
-    Dealership dealership;
+    private Dealership dealership;
 
-    private UserInterface() {
+    public UserInterface() {
     }
 
     public void display () {
@@ -41,6 +41,7 @@ public class UserInterface {
                 default -> System.out.println("Not an option. Please try again.");
             }
         } while (!userText.equals("99"));
+        userInput.close();
     }
 
     private void init () {
@@ -74,13 +75,13 @@ public class UserInterface {
     }
 
     private void processGetByVehicleTypeRequest () {
-        displayVehicles(dealership.getAllVehicles());
+
     }
 
     private void processGetAllVehicleRequest () {
-
-
+        displayVehicles(dealership.getAllVehicles());
     }
+
     private void processAddVehicleRequest () {
 
     }
