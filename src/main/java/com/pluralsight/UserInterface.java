@@ -1,7 +1,7 @@
 package com.pluralsight;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class UserInterface {
     private Dealership dealership;
@@ -10,7 +10,6 @@ public class UserInterface {
     }
 
     public void display () {
-        Scanner userInput = new Scanner(System.in);
         String userText = "";
         init();
         do {
@@ -26,7 +25,7 @@ public class UserInterface {
                     9.Remove a vehicle
                     99.Quit
                     """);
-            userText = userInput.nextLine();
+            userText = Util.userPrompt();
             switch (userText) {
                 case "1" -> processGetByPriceRequest();
                 case "2" -> processGetByMakeModelRequest();
@@ -41,7 +40,6 @@ public class UserInterface {
                 default -> System.out.println("Not an option. Please try again.");
             }
         } while (!userText.equals("99"));
-        userInput.close();
     }
 
     private void init () {
@@ -49,33 +47,93 @@ public class UserInterface {
     }
 
     private void displayVehicles (ArrayList<Vehicle> vehiclesRequest) {
+        System.out.println("Results (Enter anything to exit)");
         for (Vehicle currentVehicle : vehiclesRequest) {
             currentVehicle.display();
         }
+        Util.userPrompt();
     }
 
     private void processGetByPriceRequest () {
-
+        String userText = "";
+        BigDecimal min = BigDecimal.ZERO;
+        BigDecimal max = new BigDecimal("1000000");
+        do {
+            try {
+                System.out.println("Price Range\nMin:");
+                min = new BigDecimal(Util.userPrompt());
+                System.out.println("Price Range\nMax:");
+                max = new BigDecimal(Util.userPrompt());
+                System.out.println(min + " - " + max + " (Y/N)");
+                userText = Util.userPrompt();
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
+        } while (!userText.equalsIgnoreCase("y"));
+        displayVehicles(dealership.getVehiclesByPrice(min, max));
     }
 
     private void processGetByMakeModelRequest () {
-
+        String make = "";
+        String model = "";
+        System.out.println("Make: ");
+        make = Util.userPrompt();
+        System.out.println("Model: ");
+        model = Util.userPrompt();
+        displayVehicles(dealership.getVehiclesByMakeModel(make, model));
     }
 
     private void processGetByYearRequest () {
+        String userText = "";
+        int yearMin = 0;
+        int yearMax = 100000;
+        do {
+            try {
+                System.out.println("Year Range\nMin:");
+                yearMin= Integer.parseInt(Util.userPrompt());
+                System.out.println("Year Range\nMax:");
+                yearMax = Integer.parseInt(Util.userPrompt());
+                System.out.println(yearMin + " - " + yearMax + " (Y/N)");
+                userText = Util.userPrompt();
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
+        } while (!userText.equalsIgnoreCase("y"));
+        displayVehicles(dealership.getVehiclesByYear(yearMin, yearMax));
 
     }
 
     private void processGetByColorRequest () {
-
+        String color = "";
+        System.out.println("Color: ");
+        color = Util.userPrompt();
+        displayVehicles(dealership.getVehiclesByColor(color));
     }
 
     private void processGetByMileageRequest () {
-
+        String userText = "";
+        int mileageMin = 0;
+        int mileageMax = 1000000;
+        do {
+            try {
+                System.out.println("Mileage Range\nMin:");
+                mileageMin = Integer.parseInt(Util.userPrompt());
+                System.out.println("Mileage Range\nMax:");
+                mileageMax = Integer.parseInt(Util.userPrompt());
+                System.out.println(mileageMin + " - " + mileageMax + " (Y/N)");
+                userText = Util.userPrompt();
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
+        } while (!userText.equalsIgnoreCase("y"));
+        displayVehicles(dealership.getVehiclesByMileage(mileageMin, mileageMax));
     }
 
     private void processGetByVehicleTypeRequest () {
-
+        String type = "";
+        System.out.println("Vehicle Type: ");
+        type = Util.userPrompt();
+        displayVehicles(dealership.getVehiclesByType(type));
     }
 
     private void processGetAllVehicleRequest () {

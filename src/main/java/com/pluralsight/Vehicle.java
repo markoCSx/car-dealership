@@ -26,4 +26,37 @@ public class Vehicle {
     public void display () {
         System.out.printf("Vin: %d Year:%d Make: %s Model: %s Type: %s Color %s Mileage: %d Price: %s\n", this.vin, this.year, this.make, this.model, this.vehicleType, this.color, this.odometer, this.price);
     }
+
+    public int getVin() {
+        return vin;
+    }
+
+    public int getYear() {
+        return year;
+    }
+
+    public String getMake() {
+        return make;
+    }
+
+    public String getModel() {
+        return model;
+    }
+
+    public String getVehicleType() {
+        return vehicleType;
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+    public int getOdometer() {
+        return odometer;
+    }
+
+    public BigDecimal getPrice() {
+        return price;
+    }
+
 }
