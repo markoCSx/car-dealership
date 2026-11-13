@@ -1,0 +1,56 @@
+package com.pluralsight;
+
+import java.math.BigDecimal;
+import java.util.ArrayList;
+
+public class Dealership {
+    private String name;
+    private String address;
+    private String phoneNumber;
+    private ArrayList<Vehicle> inventory;
+
+    private Dealership (String name, String address, String phoneNumber) {
+        this.name = name;
+        this.address = address;
+        this.phoneNumber = phoneNumber;
+        this.inventory = new ArrayList<>();
+    }
+
+    public ArrayList<Vehicle> getVehiclesByPrice (BigDecimal min, BigDecimal max) {
+        return null;
+    }
+
+    public ArrayList<Vehicle> getVehiclesByMakeModel (String make, String model) {
+        return null;
+    }
+
+    public ArrayList<Vehicle> getVehiclesByYear (int min, int max) {
+        return null;
+    }
+
+    public ArrayList<Vehicle> getVehiclesByColor (String color) {
+        return null;
+    }
+
+    public ArrayList<Vehicle> getVehiclesByMileage (int min, int max) {
+        return null;
+    }
+
+    public ArrayList<Vehicle> getVehiclesByType (String type) {
+        return null;
+    }
+
+    public ArrayList<Vehicle> getAllVehicles () {
+        return inventory;
+    }
+
+    public void addVehicle (Vehicle vehicle) {
+        inventory.add(vehicle);
+    }
+
+    public void removeVehicle (Vehicle vehicle) {
+        inventory.remove(vehicle);
+    }
+
+
+}
