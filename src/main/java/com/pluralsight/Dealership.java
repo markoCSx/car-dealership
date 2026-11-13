@@ -9,7 +9,7 @@ public class Dealership {
     private String phoneNumber;
     private ArrayList<Vehicle> inventory;
 
-    private Dealership (String name, String address, String phoneNumber) {
+    public Dealership (String name, String address, String phoneNumber) {
         this.name = name;
         this.address = address;
         this.phoneNumber = phoneNumber;
