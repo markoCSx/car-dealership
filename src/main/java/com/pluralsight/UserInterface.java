@@ -172,7 +172,7 @@ public class UserInterface {
                 price = new BigDecimal(Util.userPrompt());
                 System.out.printf("%d|%d|%s|%s|%s|%s|%d|%s (Y/N)", vin, year, make, model, vehicleType, color, odometer, price);
             } catch (Exception e) {
-                throw new RuntimeException(e);
+                System.err.println("Invalid input.");
             }
         } while (!Util.userPrompt().equalsIgnoreCase("y"));
         Vehicle newVehicle = new Vehicle(vin, year, make, model, vehicleType, color, odometer, price);
@@ -211,7 +211,7 @@ public class UserInterface {
                 userText = Util.userPrompt();
             }
             catch (NumberFormatException e) {
-                throw new RuntimeException(e);
+                System.err.println("Invalid input.");
             }
         } while (!userText.equalsIgnoreCase("y"));
         Vehicle newVehicle = new Vehicle(vin, year, make, model, vehicleType, color, odometer, price);
