@@ -52,12 +52,11 @@ public class DealerShipManager {
 
     }
 
-    private void saveDealerShip (Dealership dealership) {
-        String copyFile = "src/main/resources/newinventory.csv";
+    public static void saveDealerShip (Dealership dealership) {
+        String directoryPath = "src/main/resources/inventorybackup.csv";
         ArrayList<Vehicle> inventory = dealership.getAllVehicles();
-
         try {
-            BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(copyFile));
+            BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(directoryPath));
 
             bufferedWriter.write(dealership.dealershipString() + "\n");
 
@@ -65,6 +64,7 @@ public class DealerShipManager {
                 bufferedWriter.write(currentVehicle.displayString() + "\n");
             }
 
+            bufferedWriter.close();
         } catch (Exception e) {
             throw new RuntimeException(e);
         }

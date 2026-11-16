@@ -40,6 +40,8 @@ public class UserInterface {
                 default -> System.out.println("Not an option. Please try again.");
             }
         } while (!userText.equals("99"));
+
+        DealerShipManager.saveDealerShip(dealership);
     }
 
     private void init () {
