@@ -16,6 +16,10 @@ public class Dealership {
         this.inventory = new ArrayList<>();
     }
 
+    public String dealershipString () {
+        return String.format("%s|%s|%s", this.name, this.address, this.phoneNumber);
+    }
+
     public ArrayList<Vehicle> getVehiclesByPrice (BigDecimal min, BigDecimal max) {
         ArrayList<Vehicle> vehiclesByPrice = new ArrayList<>();
         for (Vehicle currentVehicle : inventory) {
@@ -85,8 +89,17 @@ public class Dealership {
     }
 
     public void removeVehicle (Vehicle vehicle) {
-        inventory.remove(vehicle);
+        Integer foundIndex = null;
+        int counter = -1;
+        for(Vehicle v: this.inventory) {
+            counter++;
+            if(vehicle.getVin()  == v.getVin()) {
+                foundIndex = counter;
+                break;
+            }
+        }
+        if(foundIndex != null) {
+            inventory.remove(inventory.get(foundIndex));
+        }
     }
-
-
 }

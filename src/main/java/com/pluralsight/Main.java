@@ -6,6 +6,5 @@ public class Main {
         UserInterface yo = new UserInterface();
         yo.display();
 
-
     }
 }

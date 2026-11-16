@@ -1,8 +1,11 @@
 package com.pluralsight;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.regex.Pattern;
 
 public class DealerShipManager {
@@ -50,7 +53,21 @@ public class DealerShipManager {
     }
 
     private void saveDealerShip (Dealership dealership) {
+        String copyFile = "src/main/resources/newinventory.csv";
+        ArrayList<Vehicle> inventory = dealership.getAllVehicles();
 
+        try {
+            BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(copyFile));
+
+            bufferedWriter.write(dealership.dealershipString() + "\n");
+
+            for ( Vehicle currentVehicle : inventory) {
+                bufferedWriter.write(currentVehicle.displayString() + "\n");
+            }
+
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 
 }

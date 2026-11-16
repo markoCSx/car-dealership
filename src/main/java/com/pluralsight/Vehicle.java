@@ -23,6 +23,10 @@ public class Vehicle {
         this.price = price;
     }
 
+    public String displayString () {
+        return String.format("%d|%d|%s|%s|%s|%s|%d|%s", this.vin, this.year, this.make, this.model, this.vehicleType, this.color, this.odometer, this.price);
+    }
+
     public void display () {
         System.out.printf("Vin: %d Year:%d Make: %s Model: %s Type: %s Color %s Mileage: %d Price: %s\n", this.vin, this.year, this.make, this.model, this.vehicleType, this.color, this.odometer, this.price);
     }
